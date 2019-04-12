@@ -38,11 +38,12 @@
         <ImageView
             android:id="@+id/img_compass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="395dp"
             android:layout_below="@+id/txt_azimuth"
-            android:layout_marginTop="33dp"
-            android:src="@drawable/compass"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/comp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_azimuth" />
     </androidx.constraintlayout.widget.ConstraintLayout>
