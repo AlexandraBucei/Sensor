@@ -43,7 +43,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         compass_img = (ImageView) findViewById(R.id.img_compass);
         txt_compass = (TextView) findViewById(R.id.txt_azimuth);
 
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.water);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.pling);
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         view = this.getWindow().getDecorView();
 
@@ -77,29 +77,45 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
 
         String where = "NW";
 
-        if(mAzimuth >= 350 || mAzimuth <= 10){
+
+        if (mAzimuth >= 350 || mAzimuth <= 10) {
+            where = "N";
             mediaPlayer.start();
             vibrator.vibrate(100);
             view.setBackgroundResource(R.color.gray);
         }
-
-        if (mAzimuth >= 350 || mAzimuth <= 10)
-            where = "N";
-        if (mAzimuth < 350 && mAzimuth > 280)
+        if (mAzimuth < 350 && mAzimuth > 280) {
             where = "NW";
-        if (mAzimuth <= 280 && mAzimuth > 260)
+            setWhite();
+        }
+        if (mAzimuth <= 280 && mAzimuth > 260) {
             where = "W";
-        if (mAzimuth <= 260 && mAzimuth > 190)
-            where = "SW";
-        if (mAzimuth <= 190 && mAzimuth > 170)
-            where = "S";
-        if (mAzimuth <= 170 && mAzimuth > 100)
-            where = "SE";
-        if (mAzimuth <= 100 && mAzimuth > 80)
-            where = "E";
-        if (mAzimuth <= 80 && mAzimuth > 10)
-            where = "NE";
+            setWhite();
+        }
 
+        if (mAzimuth <= 260 && mAzimuth > 190) {
+            where = "SW";
+            setWhite();
+        }
+
+        if (mAzimuth <= 190 && mAzimuth > 170) {
+            where = "S";
+            setWhite();
+        }
+        if (mAzimuth <= 170 && mAzimuth > 100) {
+            where = "SE";
+            setWhite();
+        }
+
+        if (mAzimuth <= 100 && mAzimuth > 80) {
+            where = "E";
+            setWhite();
+        }
+
+        if (mAzimuth <= 80 && mAzimuth > 10) {
+            where = "NE";
+            setWhite();
+        }
 
         txt_compass.setText(mAzimuth + "° " + where);
     }
@@ -107,6 +123,10 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public void setWhite(){
+        view.setBackgroundResource(R.color.white);
     }
 
     public void start(){

@@ -59,6 +59,13 @@ public class Accelerometers extends AppCompatActivity implements SensorEventList
             zText.setText("Z:" + event.values[2]);
 
 
+        if(event.values[0] < 0) {
+            view.setBackgroundResource(R.color.green);
+            vibrator.vibrate(150);
+        }else{
+            view.setBackgroundResource(R.color.pink);
+
+        }
 
     }
 
